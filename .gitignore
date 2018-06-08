@@ -1,6 +1,9 @@
 # my virtual environment
 blotter_project/
 
+# my config file containing private api keys
+config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
