@@ -26,7 +26,7 @@
 		<div id="navbarExampleTransparentExample" class="navbar-menu">
 			<div class="navbar-start">
 				<a class="navbar-item" href="#abstract">
-					Abstact
+					Abstract
 				</a>
 				<a class="navbar-item" href="#data">
 					The Data
@@ -130,7 +130,7 @@
 
 				<div class="content">
 					<p>
-						NU Blotter uses data scraped from the <a href="https://www.northwestern.edu/up/facts-and-figures/campus-crime/daily-blotter/evanston-campus-police-blotter.html">Northwestern Campus Police Blotter</a>. Its dataset contains 18,475 incidents from 2006 to 2018. The raw data for date, time, and address have to be preprocessed before machine learning algorithms can be applied to it. The features it derives are:
+						NU Blotter uses data scraped from the <a href="https://www.northwestern.edu/up/facts-and-figures/campus-crime/daily-blotter/evanston-campus-police-blotter.html">Northwestern Campus Police Blotter</a>. Its dataset contains 18,475 incidents from 2006 to 2018. The raw data for date, time, and address had to be preprocessed before machine learning algorithms could be applied to it. The features I derived were:
 					</p>
 					<ul>
 						<li> Time of day (represented with <a href="https://ianlondon.github.io/blog/encoding-cyclical-features-24hour-time/">sine cosine encoding</a> to reflect the cyclic nature of time)</li>
@@ -140,7 +140,7 @@
 						<li> Dorm (as {-1,1} for whether the address is a dorm)</li>
 					</ul>
 					<p>
-						The incident type provided in each blotter entry is very specific, with 125 different types of incidents specified. I initially grouped these into 16 categories. I excluded all incidents of type "General/Other" from this initial 16-category breakdown because this category seemed to included a mix of crimes from all the other categories, as opposed to defining a separate type of crime. It was only adding noise to the other categories. But I soon realized that I would need more data to achieve success predicting 16 categories. Instead, I regrouped these categories into 2 classes:
+						The incident type provided in each blotter entry is very specific, with 125 different types of incidents specified. I initially grouped these into 16 categories. I excluded all incidents of type "General/Other" from the final dataset because this category seemed to included a mix of crimes from all the other categories, as opposed to defining a separate type of crime. In this way, it was only adding noise to the other categories. But I soon realized that I would need more data to achieve success predicting all 16 categories. Instead, I regrouped these categories into 2 classes:
 					</p>
 					<ul>
 						<li>Crimes associated with students (Alcohol/Drugs and Noise/Disturbances)</li>
@@ -258,7 +258,7 @@
 
 				<div class="content">
 					<p>
-						To train a machine learning model on this data, I used the Scikit-Learn implementations of a few different machine learning models. I used 10-fold cross validation to compare their performance. I experimented with k-nearest neighbors, decision trees, and logistic regression. The data had high class imbalance, with only about 15% of records corresponding to alcohol/drugs/noise violations, and the remaining 85% belonging to the other classification. This meant that accuracy is not the ideal metric for comparing models, as a model that always guessed non-alcohol/drugs/noise could get 85% accuracy. Instead, I used the F1 score of each model to evaluate its performance. This gave an equal weighting to precision and recall. A summary of a few of the model's cross validation metrics are reported below, where "baseline" is zeroR for accuracy and random for precision, recall, and F1 score. 
+						To train a machine learning model on this data, I used the Scikit-Learn implementations of a few different machine learning models. I used 10-fold cross validation to compare their performance. I experimented with k-nearest neighbors, decision trees, and logistic regression. The data had high class imbalance, with only about 15% of records corresponding to alcohol/drugs/noise violations, and the remaining 85% belonging to the complementary classification. This meant that accuracy is not the ideal metric for comparing models, as a model that always guessed non-alcohol/drugs/noise could get 85% accuracy. Instead, I used the F1 score of each model to evaluate its performance. This gave an equal weighting to precision and recall. A summary of a few of the model's cross validation metrics are reported below, where "baseline" is zeroR for accuracy and random for precision, recall, and F1 score. 
 					</p>
 					<table class="table">
 						<thead>
@@ -326,7 +326,7 @@
 
 				<div class="content">
 					<p>
-						When evaluating the 1-nearest neighbor algorithm on the validation data, the model had 87.70% accuracy (compared to zeroR baseline of 84.63%). Although this result is significant with p = 0.0002 for a Fisher exact test, even more significant results can be found by examining the other metrics. 
+						When evaluating the 1-nearest neighbor algorithm on the validation data, the model had 87.70% accuracy (compared to a zeroR baseline of 84.63%). Although this result is significant with p = 0.0002 for a Fisher exact test, even more significant results can be found by examining the other metrics. 
 					</p>
 					<table class="table">
 						<thead>
@@ -373,7 +373,7 @@
 
 				<div class="content">
 					<p>
-						NU Blotter can be used to predict crime type of Northwestern Campus Police incidents based on the time and location of the incident. This could be useful to officers because it would allow them to respond to 911 calls faster, and could be used to plan patrols for future events. An interesting area of future work would be attempting to achieve similar levels of accuracy using small decision trees. This would make the model easier to interpret, perhaps giving the officers simple rules like "If it's after 9pm and you're North of Foster Street, the liklihood of alcohol related incidents increases."
+						NU Blotter can be used to predict crime type of Northwestern Campus Police incidents based on the time and location of the incident. This could be useful to officers because it would allow them to respond to 911 calls faster, and could be used to plan patrols for future incidents. An interesting area of future work would be attempting to achieve similar levels of accuracy using small decision trees. This could make the model easier to interpret, perhaps giving the officers simple rules like "If it's after 9pm and you're North of Foster Street, the likelihood of alcohol related incidents increases." I would also be interested in speaking with a Northwestern Police officer to get their opinion on which types of crimes require the most distinct response profiles. Perhaps there are more useful predictions, such as violent vs. nonviolent, that would be more useful to an officer going into an unknown situation.
 					</p>
 				</div>
 			</div>
