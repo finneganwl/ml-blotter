@@ -11,8 +11,8 @@ from sklearn.metrics import recall_score
 from modelSelection import preprocess 
 
 # import data
-df_train = pd.read_csv('train.csv', sep=',', header=0)
-df_validation = pd.read_csv('validation.csv', sep=',', header=0)
+df_train = pd.read_csv('data/train.csv', sep=',', header=0)
+df_validation = pd.read_csv('data/validation.csv', sep=',', header=0)
 
 X_train, y_train = preprocess(df_train)
 X_validation, y_validation = preprocess(df_validation)

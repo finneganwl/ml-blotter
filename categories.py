@@ -8,7 +8,7 @@ import csv
 
 if __name__ == "__main__":
 	cats = {}
-	with open('blotter.csv', 'r') as inFile:
+	with open('data/raw_blotter.csv', 'r') as inFile:
 		reader = csv.reader(inFile)
 		for row in reader:
 			cat = row[6]

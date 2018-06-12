@@ -29,7 +29,7 @@ def getCoords(location):
 
 
 dorms = {}
-with open('dorms.csv', 'r') as dormsFile:
+with open('data/dorms.csv', 'r') as dormsFile:
 	next(dormsFile)  # skip header line
 	dormsReader = csv.reader(dormsFile)
 	for row in dormsReader:
@@ -73,8 +73,8 @@ def createMonthArray(month):
 	return out
 
 
-with open('raw_blotter.csv', 'r') as inFile:
-	with open('features_blotter.csv', 'w') as outFile:
+with open('data/raw_blotter.csv', 'r') as inFile:
+	with open('data/features_blotter.csv', 'w') as outFile:
 		reader = csv.reader(inFile)
 		writer = csv.writer(outFile)
 		headersOut = ["case_number", "date_reported", "date_occurred", "date_other", "address", "address_name", "incident_type", "criminal_offense", "disposition", "sin_time", "cos_time", "mon", "tues", "wed", "thurs", "fri", "sat", "sun", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "latitude", "longitude", "is_dorm", "category"]

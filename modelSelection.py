@@ -42,7 +42,7 @@ def preprocess(df):
 
 if __name__ == "__main__":
 	# import data
-	df = pd.read_csv('train.csv', sep=',', header=0)
+	df = pd.read_csv('data/train.csv', sep=',', header=0)
 
 	X, y = preprocess(df)
 

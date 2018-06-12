@@ -15,7 +15,7 @@ LAT = 30
 LNG = 31
 DERIVED_FEATURES_START = 9
 
-df = pd.read_csv('features_blotter.csv', sep=',', header=0)
+df = pd.read_csv('data/features_blotter.csv', sep=',', header=0)
 # also takes care of missing values encoded as [0,0]
 df = df[df.latitude < NORTHERN_BOUND]
 df = df[df.latitude > SOUTHERN_BOUND]
@@ -62,7 +62,7 @@ lngScaled = scale(matrix[:,[LNG]].astype(float))
 outMatrix = np.concatenate((matrix[:,0:DERIVED_FEATURES_START], matrix[:,[LAT]], matrix[:,[LNG]], matrix[:,DERIVED_FEATURES_START:LAT], latScaled, lngScaled, matrix[:,(LNG+1):]), axis=1)
 print outMatrix[1,:]
 
-with open('clean_features_blotter.csv', 'w') as outFile:
+with open('data/clean_features_blotter.csv', 'w') as outFile:
 	writer = csv.writer(outFile)
 	headersOut = ["case_number", "date_reported", "date_occurred", "date_other", "address", "address_name", "incident_type", "criminal_offense", "disposition", "latitude", "longitude", "sin_time", "cos_time", "mon", "tues", "wed", "thurs", "fri", "sat", "sun", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "latitude_scaled", "longitude_scaled", "is_dorm", "category"]
 	writer.writerow(headersOut)

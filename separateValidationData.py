@@ -2,7 +2,7 @@ import numpy as np
 #import pandas as pd 
 import csv
 
-with open("clean_features_blotter.csv", "r") as inputFile:
+with open("data/clean_features_blotter.csv", "r") as inputFile:
 	reader = csv.reader(inputFile)
 	headers = reader.next()
 	print headers
@@ -22,13 +22,13 @@ print splitN
 train = arr[:splitN,:]
 validation = arr[splitN:,:]
 
-with open("validation.csv", "w") as validationFile:
+with open("data/validation.csv", "w") as validationFile:
 	writer = csv.writer(validationFile)
 	writer.writerow(headers)
 	for row in validation:
 		writer.writerow(row)
 
-with open("train.csv", "w") as trainFile:
+with open("data/train.csv", "w") as trainFile:
 	writer = csv.writer(trainFile)
 	writer.writerow(headers)
 	for row in train:

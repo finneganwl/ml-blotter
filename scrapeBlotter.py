@@ -50,7 +50,7 @@ def fetchAndScrape(url):
 		print 'Error fetching', url
 
 
-with open('raw_blotter.csv', 'wb') as csvfile:
+with open('data/raw_blotter.csv', 'wb') as csvfile:
 	writer = csv.writer(csvfile)
 	# http://www.northwestern.edu/up/blotter/blotter_ev-mar2006.html
 	for year in range(2006,2018+1):
