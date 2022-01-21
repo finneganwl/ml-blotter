@@ -10,7 +10,7 @@ decorator==4.3.0
 enum34==1.1.6
 graphviz==0.8.3
 idna==2.6
-ipython==5.7.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 kiwisolver==1.0.1
 lxml==4.2.1
